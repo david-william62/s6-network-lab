@@ -21,4 +21,5 @@ int main() {
     printf("----Child process---- \n");
     printf("Sum of odd numbers in array is %d\n",sumOdd);
   }
+  return 0;
 }
