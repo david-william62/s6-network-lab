@@ -19,21 +19,21 @@ void main() {
 	}
 	printf("[+]TCP Server created. \n");
 	memset(&server_addr,'\0',sizeof(server_addr));
-	server_addr.sin_family-AF_INET;
+	server_addr.sin_family=AF_INET;
 	server_addr.sin_port = port;
 	server_addr.sin_addr.s_addr = inet_addr(ip);
-	n=bind(server_sock,(struct sockaddr*)&server_addr,sizeof(server_addr));
+	n=bind(server_sock,(struct sockaddr *)&server_addr,sizeof(server_addr));
 	if(n<0) {
 		perror("[-]Bind error");
 		exit(1);
 	}
 	printf("[+]Bind to port num: %d\n",port);
 	listen(server_sock,10);
-	printf("[+]Listening....");
+	printf("[+]Listening....\n");
 	while(1) {
 		int addr_size=sizeof(client_addr);
 		client_sock=accept(server_sock,(struct sockaddr*)&client_addr,&addr_size);
-		printf("[+]Client Connected");
+		printf("[+]Client Connected\n");
 		bzero(buffer,1024);
 		recv(client_sock,buffer,sizeof(buffer),0);
 		printf(">>Client:%s\n",buffer);
