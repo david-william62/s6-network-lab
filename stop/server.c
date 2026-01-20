@@ -40,10 +40,8 @@ void main() {
 			printf("[+]Server >> Received Packet: %s(duplicate)\n",buffer);
 		x=atoi(buffer);
 		sleep(1);
-		if(rand()%2==0) {
-			printf("[+]Server >> Sending acknowledgement from packet %s\n",buffer);
-			sendto(sockfd,buffer,1024,0,(struct sockaddr *)&client_addr, sizeof(client_addr));
-		}
+		printf("[+]Server >> Sending acknowledgement from packet %s\n",buffer);
+		sendto(sockfd,buffer,1024,0,(struct sockaddr *)&client_addr, sizeof(client_addr));
 	}
 }
 
